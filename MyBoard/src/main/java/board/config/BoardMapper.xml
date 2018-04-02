@@ -4,12 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardMapper">
 
+	<!-- 글 전체목록확인 -->
 	<select id="boardList" resultType="BoardDTO">
 	select num, title, content, author, to_char(writeday,'yyyy/mm/dd') writeday, readcnt
 	from myboard
 	order by num desc
 	</select>
 
-	
-
+	<!-- 글 쓰기 -->
+	<insert id="boardWrite" parameterType="BoardDTO">
+	insert into myboard(num,title,content,author)
+	values(myboard_seq.nextval,#{title},#{content},#{author})
+	</insert>
 </mapper>

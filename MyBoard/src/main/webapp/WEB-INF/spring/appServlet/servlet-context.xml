@@ -8,8 +8,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<context:component-scan base-package="board.*"/>	
-		
-		
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 
@@ -17,5 +15,8 @@
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>		
+	
+	<mvc:view-controller path="/writeUI" view-name="write"/>
+		
 		
 </beans>

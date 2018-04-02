@@ -17,5 +17,8 @@ public class BoardService {
 	public List<BoardDTO> boardList(){
 		return dao.boardList();
 	}
-
+	
+	public void boardWrite(BoardDTO dto) {
+		dao.boardWrite(dto);
+	}
 }

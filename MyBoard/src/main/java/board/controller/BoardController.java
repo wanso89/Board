@@ -23,5 +23,10 @@ public class BoardController {
 		return new ModelAndView("boardList","boardList",boardList);
 	}
 	
-	
+	//글 쓰기
+	@RequestMapping("/boardWrite")
+	public ModelAndView boardWrite(BoardDTO dto) {
+		service.boardWrite(dto);
+		return new ModelAndView("redirect:/boardList");
+	}
 }
