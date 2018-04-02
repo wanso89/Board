@@ -14,10 +14,7 @@
 		$("#writeUI").on('click',function(){
 			location.href="writeUI";
 		});
-			
 	});
-	
-
 </script>
 </head>
 <body>
