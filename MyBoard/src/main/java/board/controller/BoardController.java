@@ -39,4 +39,11 @@ public class BoardController {
 		return new ModelAndView("boardRetrieve","boardList",dto);
 	}
 	
+	//글 수정하기
+	@RequestMapping("/boardUpdate")
+	public ModelAndView boardUpdate(BoardDTO dto) {
+		service.boardUpdate(dto);
+		return new ModelAndView("redirect:boardList");
+	}
+	
 }

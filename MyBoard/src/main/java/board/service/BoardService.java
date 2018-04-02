@@ -25,4 +25,8 @@ public class BoardService {
 	public BoardDTO boardRetrieve(int num) {
 		return dao.boardRetrieve(num);
 	}
+	
+	public void boardUpdate(BoardDTO dto) {
+		dao.boardUpdate(dto);
+	}
 }

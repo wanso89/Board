@@ -16,11 +16,16 @@
 </script>
 </head>
 <body>
+	<form action="boardUpdate" method="post">
+	글번호 : ${boardList.num}<br>
+		   <input type="hidden" name="num" value="${boardList.num}">
 	작성자 : ${boardList.author}<br>
 	작성일 : ${boardList.writeday}<br>
 	조회수 : ${boardList.readCnt}<br>
 	글제목 : <input type="text" name="title" value="${boardList.title}"><br>
-	글내용 : <br><textarea rows="40" cols="40">${boardList.content}</textarea>
+	글내용 : <br><textarea rows="40" cols="40" name="content">${boardList.content}</textarea><br>
+	       <input type="submit" value="글 수정하기">
+	</form>
 	<br>
 	<button id="button">목록보기</button>
 </body>

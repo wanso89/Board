@@ -30,4 +30,8 @@ public class BoardDAO {
 	private void readCntUpdate(int num) {
 		template.update("BoardMapper.readCntUpdate",num);
 	}
+	
+	public void boardUpdate(BoardDTO dto) {
+		template.update("BoardMapper.boardUpdate",dto);
+	}
 }
