@@ -1,12 +1,14 @@
 package board.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import board.dto.BoardDTO;
@@ -46,4 +48,11 @@ public class BoardController {
 		return new ModelAndView("redirect:boardList");
 	}
 	
+	//글 검색하기
+	@RequestMapping(value="/boardSearch", method=RequestMethod.POST)
+	@ResponseBody
+	public List<BoardDTO> boardSearch(@RequestParam HashMap<String,String> map) {
+		List<BoardDTO> boardList = service.boardSearch(map);
+		return boardList;
+	}
 }

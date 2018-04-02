@@ -14,11 +14,40 @@
 		$("#writeUI").on('click',function(){
 			location.href="writeUI";
 		});
-	});
+		
+		$(".search").on('click keyup',function(){
+			var params = $("#boardForm").serialize();
+			$.ajax({
+				url : "boardSearch",
+				type : "post",
+				data : params,
+				success : function(result){
+					var table = '<tr>';
+					$.each(result,function(idx,data){
+						table += '<td>' + data.num + '</td>';
+						table += '<td>' + '<a href=' + 'boardRetrieve?num=' + data.num + '>' + data.title + '</a>' + '</td>';
+						table += '<td>' + data.author + '</td>';
+						table += '<td>' + data.writeday + '</td>';
+						table += '<td>' + data.readCnt + '</td>';
+						table += '</tr>';
+					});
+						$("#tbody").html(table);
+					}
+				});
+			});
+		});
 
 </script>
 </head>
 <body>
+	<form id="boardForm">
+		<select name="searchName">
+			<option value="author">작성자</option>
+			<option value="title">글제목</option>
+		</select>
+		<input class="search" type="text" name="searchValue">
+		<button class="search">검색</button>
+	</form>
 	<table border="1">
 		<thead>
 			<tr>
@@ -28,7 +57,7 @@
 				<th>작성일</th>
 				<th>조회수</th>
 		</thead>
-		<tbody>
+		<tbody id="tbody">
 			<c:forEach items="${boardList}" var="boardList">
 				<tr>
 					<td>${boardList.num}</td>

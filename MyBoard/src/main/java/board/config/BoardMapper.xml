@@ -33,5 +33,19 @@
 	where num=#{num}
 	</update>
 	
+	<select id="boardSearch" parameterType="hashmap" resultType="BoardDTO">
+	select num, title, content, author, to_char(writeday,'yyyy/mm/dd') writeday, readcnt
+	from myboard
+	<if test="searchName == 'author'">
+	where author LIKE '%' || #{searchValue} || '%'
+	</if>
+	<if test="searchName == 'title'">
+	where title LIKE '%' || #{searchValue} || '%'
+	</if>
+	order by num desc
+	</select>
+	
+	
+	
 
 </mapper>

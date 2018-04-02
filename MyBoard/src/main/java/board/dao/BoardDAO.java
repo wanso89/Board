@@ -1,5 +1,6 @@
 package board.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -34,4 +35,9 @@ public class BoardDAO {
 	public void boardUpdate(BoardDTO dto) {
 		template.update("BoardMapper.boardUpdate",dto);
 	}
+	
+	public List<BoardDTO> boardSearch(HashMap<String,String> map){
+		return template.selectList("BoardMapper.boardSearch",map);
+	}
+	
 }
