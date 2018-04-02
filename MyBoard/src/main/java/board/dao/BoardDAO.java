@@ -21,4 +21,8 @@ public class BoardDAO {
 	public void boardWrite(BoardDTO dto) {
 		template.insert("BoardMapper.boardWrite",dto);
 	}
+	
+	public BoardDTO boardRetrieve(int num){
+		return template.selectOne("BoardMapper.boardRetrieve",num);
+	}
 }

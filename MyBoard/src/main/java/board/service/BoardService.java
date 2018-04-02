@@ -21,4 +21,8 @@ public class BoardService {
 	public void boardWrite(BoardDTO dto) {
 		dao.boardWrite(dto);
 	}
+	
+	public BoardDTO boardRetrieve(int num) {
+		return dao.boardRetrieve(num);
+	}
 }

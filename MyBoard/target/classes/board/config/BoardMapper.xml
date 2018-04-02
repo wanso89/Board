@@ -13,7 +13,13 @@
 	<insert id="boardWrite" parameterType="BoardDTO">
 	insert into myboard(num,title,content,author)
 	values(myboard_seq.nextval,#{title},#{content},#{author})
-	
 	</insert>
+	
+	<select id="boardRetrieve" parameterType="int" resultType="BoardDTO">
+	select num, title, content, author, to_char(writeday,'yyyy/mm/dd') writeday, readcnt
+	from myboard
+	where num=#{num}
+	</select>
+	
 
 </mapper>
