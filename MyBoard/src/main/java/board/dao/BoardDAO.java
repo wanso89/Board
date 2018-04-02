@@ -17,4 +17,8 @@ public class BoardDAO {
 	public List<BoardDTO> boardList(){
 		return template.selectList("BoardMapper.boardList");
 	}
+	
+	public void boardWrite(BoardDTO dto) {
+		template.insert("BoardMapper.boardWrite",dto);
+	}
 }

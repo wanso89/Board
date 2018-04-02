@@ -8,6 +8,15 @@
 <head>
 <meta content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$().ready(function(){
+		$("#writeUI").on('click',function(){
+			location.href="writeUI";
+		});
+	});
+
+</script>
 </head>
 <body>
 	<table border="1">
@@ -31,5 +40,8 @@
 			</c:forEach>
 		</tbody>	
 	</table>
+	<br>
+	<br>
+	<button id="writeUI">글쓰기</button>
 </body>
 </html>

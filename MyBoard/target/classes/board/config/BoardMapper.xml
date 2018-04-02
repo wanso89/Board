@@ -10,6 +10,10 @@
 	order by num desc
 	</select>
 
+	<insert id="boardWrite" parameterType="BoardDTO">
+	insert into myboard(num,title,content,author)
+	values(myboard_seq.nextval,#{title},#{content},#{author})
 	
+	</insert>
 
 </mapper>
