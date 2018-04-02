@@ -12,6 +12,11 @@
 		$("#button").on('click',function(){
 			location.href="boardList";
 		});
+		
+		$("#delete").on('click',function(){
+			location.href="boardDelete?num=${boardList.num}";
+		});
+		
 	});
 </script>
 </head>
@@ -27,6 +32,7 @@
 	       <input type="submit" value="글 수정하기">
 	</form>
 	<br>
-	<button id="button">목록보기</button>
+	<button id="button">목록보기</button><br>
+	<button id="delete">글 삭제하기</button>
 </body>
 </html>

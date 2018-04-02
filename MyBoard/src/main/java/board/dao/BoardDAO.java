@@ -40,4 +40,9 @@ public class BoardDAO {
 		return template.selectList("BoardMapper.boardSearch",map);
 	}
 	
+	public void boardDelete(int num) {
+		template.delete("BoardMapper.boardDelete",num);
+	}
+	
+	
 }

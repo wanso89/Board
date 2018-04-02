@@ -55,4 +55,14 @@ public class BoardController {
 		List<BoardDTO> boardList = service.boardSearch(map);
 		return boardList;
 	}
+	
+	//글 삭제하기
+	@RequestMapping("/boardDelete")
+	public ModelAndView boardDelete(@RequestParam int num) {
+		service.boardDelete(num);
+		return new ModelAndView("redirect:/boardList");
+	}
+	
+	
+	
 }

@@ -34,4 +34,10 @@ public class BoardService {
 	public List<BoardDTO> boardSearch(HashMap<String,String> map){
 		return dao.boardSearch(map);
 	}
+	
+	public void boardDelete(int num) {
+		dao.boardDelete(num);
+	}
+	
+	
 }
