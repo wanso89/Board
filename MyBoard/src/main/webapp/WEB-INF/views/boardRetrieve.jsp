@@ -6,6 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$().ready(function(){
+		$("#button").on('click',function(){
+			location.href="boardList";
+		});
+	});
+</script>
 </head>
 <body>
 	작성자 : ${boardList.author}<br>
@@ -13,5 +21,7 @@
 	조회수 : ${boardList.readCnt}<br>
 	글제목 : <input type="text" name="title" value="${boardList.title}"><br>
 	글내용 : <br><textarea rows="40" cols="40">${boardList.content}</textarea>
+	<br>
+	<button id="button">목록보기</button>
 </body>
 </html>

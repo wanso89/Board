@@ -23,6 +23,11 @@ public class BoardDAO {
 	}
 	
 	public BoardDTO boardRetrieve(int num){
+		readCntUpdate(num);
 		return template.selectOne("BoardMapper.boardRetrieve",num);
+	}
+	//글 조회수증가
+	private void readCntUpdate(int num) {
+		template.update("BoardMapper.readCntUpdate",num);
 	}
 }
