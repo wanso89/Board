@@ -3,10 +3,39 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardMapper">
-
-	<select id="boardList" resultType="BoardDTO">
+	
+	<select id="boardList" parameterType="hashmap" resultType="BoardDTO">
 	select num, title, content, author, to_char(writeday,'yyyy/mm/dd') writeday, readcnt
 	from myboard
+	<if test="searchName == 'author'">
+	where author LIKE '%' || #{searchValue} || '%'
+	</if>
+	<if test="searchName == 'title'">
+	where title LIKE '%' || #{searchValue} || '%'
+	</if>
+	order by num desc
+	</select>
+	
+	<select id="boardSearch" parameterType="hashmap" resultType="BoardDTO">
+	select num, title, content, author, to_char(writeday,'yyyy/mm/dd') writeday, readcnt
+	from myboard
+	<if test="searchName == 'author'">
+	where author LIKE '%' || #{searchValue} || '%'
+	</if>
+	<if test="searchName == 'title'">
+	where title LIKE '%' || #{searchValue} || '%'
+	</if>
+	order by num desc
+	</select>
+	
+	<select id="totalSearchCount" parameterType="hashmap" resultType="int">
+	select count(*) from myboard
+	<if test="searchName == 'author'">
+	where author LIKE '%' || #{searchValue} || '%'
+	</if>
+	<if test="searchName == 'title'">
+	where title LIKE '%' || #{searchValue} || '%'
+	</if>
 	order by num desc
 	</select>
 
@@ -33,22 +62,14 @@
 	where num=#{num}
 	</update>
 	
-	<select id="boardSearch" parameterType="hashmap" resultType="BoardDTO">
-	select num, title, content, author, to_char(writeday,'yyyy/mm/dd') writeday, readcnt
-	from myboard
-	<if test="searchName == 'author'">
-	where author LIKE '%' || #{searchValue} || '%'
-	</if>
-	<if test="searchName == 'title'">
-	where title LIKE '%' || #{searchValue} || '%'
-	</if>
-	order by num desc
-	</select>
 	
 	<delete id="boardDelete" parameterType="int">
 	delete from myboard
 	where num=#{num}
 	</delete>
 	
+	<select id="totalCount" resultType="int">
+	select count(*) from myboard
+	</select>
 
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import board.dao.BoardDAO;
 import board.dto.BoardDTO;
+import board.dto.PageDTO;
 
 @Service
 public class BoardService {
@@ -15,8 +16,8 @@ public class BoardService {
 	@Autowired
 	BoardDAO dao;
 	
-	public List<BoardDTO> boardList(){
-		return dao.boardList();
+	public PageDTO boardList(int curPage, HashMap<String,String> map){
+		return dao.boardList(curPage, map);
 	}
 
 	public void boardWrite(BoardDTO dto) {

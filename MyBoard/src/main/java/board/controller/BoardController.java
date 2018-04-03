@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import board.dto.BoardDTO;
+import board.dto.PageDTO;
 import board.service.BoardService;
 
 @Controller
@@ -20,11 +21,12 @@ public class BoardController {
 	@Autowired
 	BoardService service;
 	
-	//글 전체목록 확인
+	//페이징 처리 관련
 	@RequestMapping("/boardList")
-	public ModelAndView boardList(){
-		List<BoardDTO> boardList = service.boardList();
-		return new ModelAndView("boardList","boardList",boardList);
+	public ModelAndView boardList(@RequestParam(required=false, defaultValue="1") int curPage,
+			                      @RequestParam HashMap<String,String> map){
+		PageDTO pDTO = service.boardList(curPage,map);
+		return new ModelAndView("boardList","pageDTO",pDTO);
 	}
 	
 	//글 쓰기
